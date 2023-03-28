@@ -37,7 +37,8 @@ ion_chain=QuantumRegister(num_qubits)
 readout=ClassicalRegister(2)
 qc=QuantumCircuit(ion_chain, readout)
 errors=[]
-backend=provider.get_backend('microsoft.estimator')
+#backend=provider.get_backend('microsoft.estimator')
+backend=Aer.get_backend('qasm_simulator')
 init_vector = np.zeros(2**num_qubits)
 init_vector[0] = 1
 
@@ -48,9 +49,13 @@ for x in range(num_qubits-1):
     qc.cx(control_qubit,x)
     qc.measure([ion_chain[control_qubit], ion_chain[x]], readout)
     #circuit = transpile(qc, backend)
-    counts=backend.run(qc, noise_model=get_noise(0.0018,0.004, 0.027)).result().get_counts()
-    errors.append(counts)
+    #counts=backend.run(qc, noise_model=get_noise(0.0018,0.004, 0.027)).result().get_counts()
+
+counts=backend.run(qc, noise_model=get_noise(0.0018,0.004, 0.027)).result().get_counts()
 def get_error_rates(error_list):
     return [1-(errors[i]['11']/SHOTS) for i in range(len(error_list))]
     
-get_error_rates(errors)
+print(counts)
+qc.draw(output='mpl')
+s=10
+s=10

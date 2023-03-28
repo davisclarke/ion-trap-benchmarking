@@ -1,0 +1,11 @@
+.conda/Library/bin/libssl-1_1-x64.dll
+.conda/msvcp140.dll
+.conda/vcruntime140_1.dll
+.conda/vcruntime140.dll
+.conda/Library/bin/libbz2.dll
+.idea/ion-trap-benchmarking.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/inspectionProfiles/profiles_settings.xml
